@@ -1,0 +1,26 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8080/eureka
+    healthcheck:
+      enabled: true
+server:
+  port: 9090
+
+apollo:
+  #eureka配置中心地址
+  meta: http://localhost:8080
+  cacheDir: /opt/data/test
+  bootstrap:
+    enabled: true
+    eagerLoad:
+      enabled: true
+
+spring:
+  application:
+    name: springboot-apollo
+  profiles:
+    active: dev
